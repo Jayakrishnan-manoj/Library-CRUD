@@ -1,6 +1,7 @@
 package com.example.librarycrud.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -12,5 +13,8 @@ interface BookDAO {
 
     @Query("SELECT * FROM BookEntity")
     fun getAllBooks() : Flow<List<BookEntity>>
+
+    @Delete
+    suspend fun deleteBook(bookEntity: BookEntity)
 
 }

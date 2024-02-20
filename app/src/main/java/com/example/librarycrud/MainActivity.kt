@@ -10,8 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -79,6 +83,8 @@ fun MainScreen(viewModel: BookViewModel) {
         }) {
             Text(text = "Insert Book into DB")
         }
+
+        booksList(viewModel = viewModel)
     }
 }
 
@@ -92,7 +98,7 @@ fun bookCard(viewModel: BookViewModel, book: BookEntity) {
     ) {
         Row {
             Text(
-                text = "" + book.id,
+                text = "" + book.id + ":",
                 fontSize = 24.sp,
                 modifier = Modifier.padding(start = 4.dp, end = 4.dp)
             )
@@ -100,6 +106,10 @@ fun bookCard(viewModel: BookViewModel, book: BookEntity) {
                 text = book.title,
                 fontSize = 24.sp,
             )
+
+            IconButton(onClick = { viewModel.deleteBook(book = book) }) {
+                Icon(imageVector = Icons.Default.Delete, contentDescription = "delete book icon")
+            }
 
 
         }
