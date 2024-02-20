@@ -7,4 +7,6 @@ class Repository(val booksDB: BooksDB) {
     suspend fun addBookToRoom(bookEntity: BookEntity) {
         booksDB.bookDao().addBook(bookEntity)
     }
+
+    fun getAllBooks() = booksDB.bookDao().getAllBooks()
 }

@@ -11,4 +11,6 @@ class BookViewModel(val repository: Repository) : ViewModel() {
         viewModelScope.launch { repository.addBookToRoom(book) }
 
     }
+
+    val books = repository.getAllBooks()
 }
