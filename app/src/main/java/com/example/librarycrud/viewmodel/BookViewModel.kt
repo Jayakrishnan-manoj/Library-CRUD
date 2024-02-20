@@ -17,4 +17,8 @@ class BookViewModel(val repository: Repository) : ViewModel() {
     fun deleteBook(book: BookEntity) {
         viewModelScope.launch { repository.deleteBookFromRoom(book) }
     }
+
+    fun updateBook(book: BookEntity) {
+        viewModelScope.launch { repository.updateBookInRoom(book) }
+    }
 }

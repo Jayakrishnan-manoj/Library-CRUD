@@ -13,4 +13,8 @@ class Repository(val booksDB: BooksDB) {
     suspend fun deleteBookFromRoom(bookEntity: BookEntity){
         booksDB.bookDao().deleteBook(bookEntity)
     }
+
+    suspend fun updateBookInRoom(bookEntity: BookEntity){
+        booksDB.bookDao().updateBook(bookEntity)
+    }
 }
